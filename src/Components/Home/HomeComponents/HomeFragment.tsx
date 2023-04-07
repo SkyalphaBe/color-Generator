@@ -6,7 +6,7 @@ function randomNumber(maxValue:number):number{
     return Math.floor(Math.random()*maxValue)
 }
 
-function generateColor():String{
+function generateColor():string{
     let firstNb:number = randomNumber(255)
     let secondeNb:number = randomNumber(255)
     let thirdNb:number = randomNumber(255)
@@ -15,10 +15,21 @@ function generateColor():String{
 }
 function HomeFragment() {
 
-    const[colorHome,setColorHome]=useState<String>("")
+    const[colorHome,setColorHome]=useState<string>("")
 
     const handleClickColor = ():void=>{
         setColorHome(generateColor)
+
+        let divColor:HTMLDivElement|null = document.querySelector(".lineboxColor")
+        let inputColor:HTMLInputElement|null = document.querySelector("input[type='text']")
+
+        if (background !== null && divColor !== null && inputColor !== null ){
+            background.style.backgroundColor=colorHome
+            background.style.transition="2s all"
+            divColor.style.backgroundColor=colorHome
+            divColor.style.transition="2s all"
+            inputColor.value=colorHome
+        }
     }
 
     return (
@@ -28,12 +39,7 @@ function HomeFragment() {
                 <input type="text"/>
             </div>
             <div className={"buttonBox"}>
-               <button onClick={()=>{
-                   handleClickColor()
-                   if (background !== null){
-                       background.style.backgroundColor=colorHome.toString()
-                   }
-               }}>Change color</button>
+               <button onClick={()=>handleClickColor()}>Change color</button>
                <button>Save Color</button>
             </div>
         </div>
