@@ -1,0 +1,28 @@
+.navBar{
+  display: flex;
+  align-items: center;
+  background-color: #212020;
+  color: #FFFFFF;
+  width: 100%;
+
+  .navBar__content{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    width: 100%;
+    padding: 10px;
+  }
+
+  .navBar__content__links{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 20%;
+    padding: 10px;
+  }
+
+  a{
+    color: #FFFFFF;
+    text-decoration: none;
+  }
+}

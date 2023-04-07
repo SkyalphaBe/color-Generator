@@ -1,16 +1,19 @@
 import React from "react";
 import {NavLink} from "react-router-dom";
+import "./NavBar.scss";
 function NavBar() {
     return (
         <div className={"navBar"}>
-            <h1>Color Generator</h1>
-            <div className={"navBar__logo"}>
-                <NavLink to={"/"}>
-                    <h2>Home</h2>
-                </NavLink>
-                <NavLink to={"/colorPalette"}>
-                    <h2>Color Palette</h2>
-                </NavLink>
+            <div className={"navBar__content"}>
+                <h1>Color Generator</h1>
+                <div className={"navBar__content__links"}>
+                    <NavLink to={"/"}>
+                        <h3>Home</h3>
+                    </NavLink>
+                    <NavLink to={"/colorPalette"}>
+                        <h3>Color Palette</h3>
+                    </NavLink>
+                </div>
             </div>
         </div>
     );
