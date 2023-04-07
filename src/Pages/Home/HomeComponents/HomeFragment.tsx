@@ -20,7 +20,7 @@ function HomeFragment() {
     const handleClickColor = ():void=>{
         setColorHome(generateColor)
 
-        let divColor:HTMLDivElement|null = document.querySelector(".lineboxColor")
+        let divColor:HTMLDivElement|null = document.querySelector(".lineBoxColor")
         let inputColor:HTMLInputElement|null = document.querySelector("input[type='text']")
 
         if (background !== null && divColor !== null && inputColor !== null ){
@@ -35,7 +35,7 @@ function HomeFragment() {
     return (
         <div className={"HomeFragment"}>
             <div className={"inputColor"}>
-                <div className={"lineboxColor"}></div>
+                <div className={"lineBoxColor"}></div>
                 <input type="text"/>
             </div>
             <div className={"buttonBox"}>
