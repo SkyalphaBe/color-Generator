@@ -1,0 +1,28 @@
+*{
+  margin: 0;
+  font-family: NeueHaasGrotesk,sans-serif;
+}
+
+body{
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  height: 100vh;
+  background-color: beige;
+}
+
+button {
+  padding: 10px;
+  border: None;
+  border-radius: 15px;
+  color: #FFFFFF;
+  background-color: #000000;
+  font-size: 1.2em;
+  transition: 0.3s;
+}
+
+button:hover{
+   scale: 1.1;
+}
+
+
