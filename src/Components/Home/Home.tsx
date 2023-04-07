@@ -6,8 +6,6 @@ function Home() {
 
     const [homeStat,setHomeStat] = useState<boolean>(true);
 
-    console.log(homeStat)
-
     return (
         <div className={"menu"}>
             <h1>Color Generator</h1>
