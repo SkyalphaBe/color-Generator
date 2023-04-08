@@ -1,6 +1,6 @@
 import React, {useEffect, useRef, useState} from "react";
 import "./Home.scss";
-import HomeFragment from "./HomeComponents/HomeFragment";
+import HomeFragment from "../../Components/HomeComponents/HomeFragment";
 import {generateColor} from "../../Utils/Utils";
 
 function Home() {
@@ -8,6 +8,7 @@ function Home() {
     const [homeStat,setHomeStat] = useState<boolean>(true);
     const [color,setColor] = useState<string>("");
     const intervalRef = useRef<number>();
+    const homeRef = useRef<HTMLDivElement>(null);
 
     const handleStop = ():void => {
         clearInterval(intervalRef.current);
@@ -18,15 +19,13 @@ function Home() {
         intervalRef.current = window.setInterval(()=>{
             setColor(generateColor());
         },1500);
-        return ()=>{
+        return ():void =>{
             clearInterval(intervalRef.current);
         }
     },[])
 
-
-
     return (
-        <div className={"home"} style={{backgroundColor:color}}>
+        <div className={"home"} style={{backgroundColor:color}} ref={homeRef}>
             <div className={"menu"}>
                 <h1>Start generating !</h1>
                 <div className={"wrapFragment"}>
@@ -38,7 +37,7 @@ function Home() {
                             }}>Generate Color</button>
                         </div>
                         :
-                        <HomeFragment/>
+                        <HomeFragment parentNode={homeRef.current}/>
                     }
                 </div>
             </div>
