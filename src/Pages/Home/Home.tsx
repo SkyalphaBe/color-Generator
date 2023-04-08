@@ -1,32 +1,40 @@
-import React, {useState} from "react";
+import React, {useEffect, useRef, useState} from "react";
 import "./Home.scss";
 import HomeFragment from "./HomeComponents/HomeFragment";
 import {generateColor} from "../../Utils/Utils";
 
-
-let time:NodeJS.Timer = setInterval(():void=>{
-    let background:HTMLDivElement|null = document.querySelector(".home")
-    let color:string = generateColor()
-    if (background !== null){
-        background.style.backgroundColor = color
-        background.style.transition="2s all"
-    }
-},1500);
-
 function Home() {
 
     const [homeStat,setHomeStat] = useState<boolean>(true);
+    const [color,setColor] = useState<string>("");
+    const intervalRef = useRef<number>();
+
+    const handleStop = ():void => {
+        clearInterval(intervalRef.current);
+    }
+
+    useEffect(()=>{
+        clearInterval(intervalRef.current);
+        intervalRef.current = window.setInterval(()=>{
+            setColor(generateColor());
+        },1500);
+        return ()=>{
+            clearInterval(intervalRef.current);
+        }
+    },[])
+
+
 
     return (
-        <div className={"home"}>
+        <div className={"home"} style={{backgroundColor:color}}>
             <div className={"menu"}>
                 <h1>Start generating !</h1>
                 <div className={"wrapFragment"}>
                     {homeStat ?
                         <div>
                             <button onClick={()=>{
-                                setHomeStat(false)
-                                clearInterval(time)
+                                setHomeStat(false);
+                                handleStop();
                             }}>Generate Color</button>
                         </div>
                         :
