@@ -24,5 +24,13 @@
   a{
     color: #FFFFFF;
     text-decoration: none;
+    padding: 10px;
+    border-radius: 15px;
+    transition: all 0.3s;
+
+    &:hover{
+      background-color: #FFFFFF;
+      color: #000000;
+    }
   }
 }
