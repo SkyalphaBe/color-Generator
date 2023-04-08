@@ -1,6 +1,17 @@
 import React, {useState} from "react";
 import "./Home.scss";
 import HomeFragment from "./HomeComponents/HomeFragment";
+import {generateColor} from "../../Utils/Utils";
+
+
+let time:NodeJS.Timer = setInterval(():void=>{
+    let background:HTMLDivElement|null = document.querySelector(".home")
+    let color:string = generateColor()
+    if (background !== null){
+        background.style.backgroundColor = color
+        background.style.transition="2s all"
+    }
+},1500);
 
 function Home() {
 
@@ -13,7 +24,10 @@ function Home() {
                 <div className={"wrapFragment"}>
                     {homeStat ?
                         <div>
-                            <button onClick={()=>setHomeStat(false)}>Generate Color</button>
+                            <button onClick={()=>{
+                                setHomeStat(false)
+                                clearInterval(time)
+                            }}>Generate Color</button>
                         </div>
                         :
                         <HomeFragment/>

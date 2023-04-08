@@ -1,25 +1,28 @@
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 import "./HomeFragment.scss";
+import {generateColor} from "../../../Utils/Utils";
 
-const background:HTMLBodyElement|null = document.querySelector("body")
-function randomNumber(maxValue:number):number{
-    return Math.floor(Math.random()*maxValue)
-}
 
-function generateColor():string{
-    let firstNb:number = randomNumber(255)
-    let secondeNb:number = randomNumber(255)
-    let thirdNb:number = randomNumber(255)
+function HomeFragment(){
+    const[colorHome,setColorHome]=useState<string>(generateColor)
 
-    return "#"+firstNb.toString(16)+secondeNb.toString(16)+thirdNb.toString(16);
-}
-function HomeFragment() {
+    useEffect(():void=>{
+        let firstColor:string = generateColor()
+        let background:HTMLDivElement|null = document.querySelector(".home")
+        let divColor:HTMLDivElement|null = document.querySelector(".lineBoxColor")
+        let inputColor:HTMLInputElement|null = document.querySelector("input[type='text']")
 
-    const[colorHome,setColorHome]=useState<string>("")
-
+        if (background !== null && divColor !== null && inputColor !== null ){
+            background.style.backgroundColor=firstColor
+            background.style.transition="2s all"
+            divColor.style.backgroundColor=firstColor
+            divColor.style.transition="2s all"
+            inputColor.value=firstColor
+        }
+    },[])
     const handleClickColor = ():void=>{
         setColorHome(generateColor)
-
+        let background:HTMLDivElement|null = document.querySelector(".home")
         let divColor:HTMLDivElement|null = document.querySelector(".lineBoxColor")
         let inputColor:HTMLInputElement|null = document.querySelector("input[type='text']")
 
