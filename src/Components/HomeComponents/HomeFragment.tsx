@@ -1,9 +1,9 @@
 import React, {useEffect, useState} from "react";
 import "./HomeFragment.scss";
-import {generateColor} from "../../utils/utils";
+import {generateColor, randomSentences} from "../../utils/utils";
 
 
-function HomeFragment(props:{"parentNode":HTMLDivElement|null}){
+function HomeFragment(props:{"parentNode":HTMLDivElement|null,"parentTitle":HTMLHeadingElement|null}) {
     const[colorHome,setColorHome]=useState<string>(generateColor);
 
     useEffect(()=>{
@@ -13,6 +13,7 @@ function HomeFragment(props:{"parentNode":HTMLDivElement|null}){
     },[colorHome])
     const handleClickColor = ():void=>{
         setColorHome(generateColor)
+        if (props.parentTitle) props.parentTitle.textContent = randomSentences();
     }
 
     return (

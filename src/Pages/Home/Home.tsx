@@ -9,6 +9,7 @@ function Home() {
     const [color,setColor] = useState<string>("");
     const intervalRef = useRef<number>();
     const homeRef = useRef<HTMLDivElement>(null);
+    const titleHomeRef = useRef<HTMLHeadingElement>(null);
 
     const handleStop = ():void => {
         clearInterval(intervalRef.current);
@@ -27,7 +28,7 @@ function Home() {
     return (
         <div className={"home"} style={{backgroundColor:color}} ref={homeRef}>
             <div className={"menu"}>
-                <h1>Start generating !</h1>
+                <h1 ref={titleHomeRef}>Start generating !</h1>
                 <div className={"wrapFragment"}>
                     {homeStat ?
                         <div>
@@ -37,7 +38,7 @@ function Home() {
                             }}>Generate Color</button>
                         </div>
                         :
-                        <HomeFragment parentNode={homeRef.current}/>
+                        <HomeFragment parentNode={homeRef.current} parentTitle={titleHomeRef.current}/>
                     }
                 </div>
             </div>

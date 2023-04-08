@@ -10,5 +10,11 @@ function generateColor():string{
 
     return "#"+firstNb.toString(16)+secondeNb.toString(16)+thirdNb.toString(16);
 }
+function randomSentences():string{
+    let sentences:string[]=["Do you like this one ?","Maybe this one ?","This color is the one !","This color is cool right ^^"
+        ,"Interesting one !","What about this color ?","Check this one !","Another one is ready","Do you see that one?"
+        ,"Bruh this one is great","Will it be the one ?","Feeling of deja vu?"];
 
-export {generateColor}
+    return sentences[randomNumber(8)];
+}
+export {generateColor,randomSentences}
