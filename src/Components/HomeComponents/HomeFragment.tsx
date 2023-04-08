@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from "react";
 import "./HomeFragment.scss";
-import {generateColor} from "../../Utils/Utils";
+import {generateColor} from "../../utils/utils";
 
 
 function HomeFragment(props:{"parentNode":HTMLDivElement|null}){

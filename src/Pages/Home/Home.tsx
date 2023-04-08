@@ -1,7 +1,7 @@
 import React, {useEffect, useRef, useState} from "react";
 import "./Home.scss";
 import HomeFragment from "../../Components/HomeComponents/HomeFragment";
-import {generateColor} from "../../Utils/Utils";
+import {generateColor} from "../../utils/utils";
 
 function Home() {
 
