@@ -1,0 +1,42 @@
+.palette{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 90vh;
+    overflow: hidden;
+
+    .menu{
+        position: relative;
+        display:flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 50vh;
+        min-width: 70vw;
+        background-color: #ffffff;
+        box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+        border-radius: 15px;
+
+        .content{
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            padding: 10px;
+            box-sizing: border-box;
+        }
+
+        .btnNew{
+            position: absolute;
+            background-color: #60ad60;
+            width: 50px;
+            height: 50px;
+            right: -22.5px;
+            top: -22.5px;
+            margin: 0;
+        }
+    }
+}
