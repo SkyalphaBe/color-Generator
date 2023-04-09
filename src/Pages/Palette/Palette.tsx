@@ -1,9 +1,11 @@
 import React from "react";
 import "./Palette.scss";
-import PaletteLine from "../../Components/PaletteComponents/PaletteLine";
+import PaletteLine from "../../Components/PaletteComponents/PaletteLine/PaletteLine";
+import PortalModal from "../../Components/PortalModal/PortalModal";
 
 function Palette(){
-    const [contentState, setContentState] = React.useState<boolean>(true);
+    const [contentState, setContentState] = React.useState<boolean>(false);
+
     return (
         <div className={"palette"}>
             <div className={"menu"}>
@@ -13,7 +15,7 @@ function Palette(){
                     </div>
                     :
                     <h1>There is no color-palette for the moment :( </h1>}
-                <button className={"btnNew"}>+</button>
+                <PortalModal/>
             </div>
         </div>
     );
