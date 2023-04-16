@@ -1,9 +1,8 @@
 import React from "react";
 import "./CreateModal.scss";
-import {createPortal} from "react-dom";
 
 function CreateModal(props:{onClose:()=>void}){
-    return createPortal(
+    return(
         <div className={"createModal"}>
             <div className={"createModal__content"}>
                 <h1 className={"createModal__content__title"}>New color palette</h1>
@@ -17,7 +16,7 @@ function CreateModal(props:{onClose:()=>void}){
                 </div>
             </div>
         </div>
-    ,document.body);
+    );
 }
 
 export default CreateModal;

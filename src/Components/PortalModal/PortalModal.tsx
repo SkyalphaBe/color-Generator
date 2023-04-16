@@ -1,6 +1,6 @@
 import React from "react";
-import {createPortal} from "react-dom";
 import CreateModal from "../PaletteComponents/CreateModal/CreateModal";
+import BackDropPortal from "../BackDropPortal/BackDropPortal";
 
 function PortalModal(){
 
@@ -11,9 +11,10 @@ function PortalModal(){
             <button className={"btnNew"} onClick={()=>setShowModal(true)}>
                 +
             </button>
-            {showModal && createPortal(
+            {showModal && <BackDropPortal>
                 <CreateModal onClose={()=>setShowModal(false)}/>
-            ,document.body)}
+            </BackDropPortal>
+            }
         </>
     );
 }
