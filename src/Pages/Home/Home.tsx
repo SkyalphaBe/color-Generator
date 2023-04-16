@@ -26,7 +26,7 @@ function Home() {
     },[])
 
     return (
-        <div className={"home"} style={{backgroundColor:color}} ref={homeRef}>
+        <main className={"home"} style={{backgroundColor:color}} ref={homeRef}>
             <div className={"menu"}>
                 <h1 ref={titleHomeRef}>Start generating !</h1>
                 <div className={"wrapFragment"}>
@@ -42,7 +42,7 @@ function Home() {
                     }
                 </div>
             </div>
-        </div>
+        </main>
     );
 }
 
