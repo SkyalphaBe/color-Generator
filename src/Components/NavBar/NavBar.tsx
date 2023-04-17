@@ -10,7 +10,7 @@ function NavBar() {
                     <NavLink to={"/"}>
                         <h3>Home</h3>
                     </NavLink>
-                    <NavLink to={"/colorPalette"}>
+                    <NavLink to={"/color-palette"}>
                         <h3>Color Palette</h3>
                     </NavLink>
                 </div>
