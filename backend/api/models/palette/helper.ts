@@ -10,4 +10,9 @@ export namespace paletteHelper {
                 .prepare('INSERT INTO palette(name) VALUES(?)')
                 .run([name]);
     }
+    export const deletePalette = (id:String) => {
+        return database
+            .prepare('DELETE FROM palette WHERE id = ?')
+            .run([id]);
+    }
 }

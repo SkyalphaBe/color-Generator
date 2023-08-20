@@ -15,7 +15,15 @@ route.post('/create'
     (req: Request, res: Response) => {
         const {name} = req.body;
         const id = paletteService.createPalette(name);
-        res.send(id.lastInsertRowid)
+        res.status(201).json({ id: id.lastInsertRowid });
+    }
+);
+
+route.delete('/delete/:id',
+    (req: Request, res: Response) => {
+        const {id} = req.params;
+        paletteService.deletePalette(id);
+        res.json('Palette deleted')
     }
 );
 

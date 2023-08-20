@@ -8,4 +8,8 @@ export namespace paletteService {
     export const createPalette = (nom:String) => {
         return paletteHelper.createPalette(nom);
     }
+
+    export const deletePalette = (id:String) => {
+        return paletteHelper.deletePalette(id);
+    }
 }
