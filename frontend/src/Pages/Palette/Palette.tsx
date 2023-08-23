@@ -4,6 +4,11 @@ import PaletteLine from "../../Components/PaletteComponents/PaletteLine/PaletteL
 import PortalModal from "../../Components/PortalModal/PortalModal";
 import {PaletteProps} from "../../utils/type";
 
+import { library } from '@fortawesome/fontawesome-svg-core'
+import { fas } from '@fortawesome/free-solid-svg-icons'
+
+library.add(fas)
+
 function Palette(){
     const [contentState, setContentState] = React.useState<boolean>(false);
     const [palette, setPalette] = React.useState<Array<PaletteProps>>([]);

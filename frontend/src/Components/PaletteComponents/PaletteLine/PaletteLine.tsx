@@ -1,5 +1,8 @@
 import React from "react";
 import "./PaletteLine.scss";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import {faPenToSquare, faTrash} from "@fortawesome/free-solid-svg-icons";
+
 
 function PaletteLine(props: {id:number,name: String,nbColor:number,parentCallback: (childData: number) => void}) {
 
@@ -26,8 +29,14 @@ function PaletteLine(props: {id:number,name: String,nbColor:number,parentCallbac
 
     return (
         <div className={"paletteLine"} onClick={()=>sendDataParent(props.id)}>
-            <div className={"paletteLine__name"}>Name : {props.name}</div>
-            <div className={"paletteLine__nbColor"}>Nb color : {props.nbColor}</div>
+            <h3 className={"paletteLine__name"}>{props.name.toUpperCase()}</h3>
+            <div className={"bottomCard"}>
+                <div className={"btnClass"}>
+                    <button><FontAwesomeIcon icon={faPenToSquare} /></button>
+                    <button><FontAwesomeIcon icon={faTrash} /></button>
+                </div>
+                <h4 className={"paletteLine__nbColor"}>color : {props.nbColor}</h4>
+            </div>
         </div>
     );
 }
