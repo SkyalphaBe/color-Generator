@@ -1,4 +1,4 @@
-import React, {useEffect} from "react";
+import React, {useEffect, useRef, useState} from "react";
 import "./Palette.scss";
 import PaletteLine from "../../Components/PaletteComponents/PaletteLine/PaletteLine";
 import PortalModal from "../../Components/PortalModal/PortalModal";
@@ -6,17 +6,30 @@ import {PaletteProps} from "../../utils/type";
 
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { fas } from '@fortawesome/free-solid-svg-icons'
+import {generateColor} from "../../utils/utils";
 
 library.add(fas)
 
 function Palette(){
     const [contentState, setContentState] = React.useState<boolean>(false);
     const [palette, setPalette] = React.useState<Array<PaletteProps>>([]);
-    const [oldPalette, setOldPalette] = React.useState<number>(); // [
+    const [oldPalette, setOldPalette] = React.useState<number>();
+    const [color,setColor] = useState<string>("");
+    const intervalRef = useRef<number>();
     const fetchData = (url: RequestInfo | URL) => fetch(url).then(res => res.json());
     const handleCallback = (childData: number) => {
         setOldPalette(childData);
     }
+
+    useEffect(()=>{
+        clearInterval(intervalRef.current);
+        intervalRef.current = window.setInterval(()=>{
+            setColor(generateColor());
+        },1500);
+        return ():void =>{
+            clearInterval(intervalRef.current);
+        }
+    },[])
 
     useEffect(() => {
         fetchData("http://localhost:8080/api/palettes")
@@ -35,7 +48,7 @@ function Palette(){
     }, [oldPalette]);
 
     return (
-        <div className={"palette"}>
+        <div className={"palette"} style={{backgroundColor:color}}>
             <div className={"menu"}>
                 {contentState ?
                     <div className={"content"}>

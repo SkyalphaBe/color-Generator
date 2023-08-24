@@ -28,12 +28,12 @@ function PaletteLine(props: {id:number,name: String,nbColor:number,parentCallbac
     }
 
     return (
-        <div className={"paletteLine"} onClick={()=>sendDataParent(props.id)}>
+        <div className={"paletteLine"}>
             <h3 className={"paletteLine__name"}>{props.name.toUpperCase()}</h3>
             <div className={"bottomCard"}>
                 <div className={"btnClass"}>
                     <button><FontAwesomeIcon icon={faPenToSquare} /></button>
-                    <button><FontAwesomeIcon icon={faTrash} /></button>
+                    <button onClick={()=>sendDataParent(props.id)}><FontAwesomeIcon icon={faTrash} /></button>
                 </div>
                 <h4 className={"paletteLine__nbColor"}>color : {props.nbColor}</h4>
             </div>
