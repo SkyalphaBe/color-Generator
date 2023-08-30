@@ -1,6 +1,6 @@
-import React, {useEffect, useRef, useState} from "react";
+import {useEffect, useRef, useState} from "react";
 import "./Home.scss";
-import HomeFragment from "../../Components/HomeComponents/HomeFragment";
+import HomeFragment from "../../Components/HomeComponents/HomeFragment/HomeFragment";
 import {generateColor} from "../../utils/utils";
 
 function Home() {

@@ -8,7 +8,8 @@ function generateColor():string{
     let secondeNb:number = randomNumber(255)
     let thirdNb:number = randomNumber(255)
 
-    return "#"+firstNb.toString(16)+secondeNb.toString(16)+thirdNb.toString(16);
+    const color = "#"+firstNb.toString(16)+secondeNb.toString(16)+thirdNb.toString(16)
+    return color.toUpperCase();
 }
 function randomSentences():string{
     let sentences:string[]=["Do you like this one ?","Maybe this one ?","This color is the one !","This color is cool right ^^"

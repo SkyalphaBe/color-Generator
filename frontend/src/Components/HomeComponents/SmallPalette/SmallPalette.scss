@@ -1,0 +1,22 @@
+.SmallPalette{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width:100px;
+    height:100px;
+    border-radius: 15px;
+    transition: all 0.3s;
+    color: #FFFFFF;
+    margin: 0 5px;
+    background-color: #a8a8a8;
+
+    &--selected{
+        background-color: #74a866;
+        scale: 1.1;
+    }
+
+    &:hover{
+        cursor: pointer;
+        scale: 1.1;
+    }
+}
