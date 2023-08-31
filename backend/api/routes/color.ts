@@ -13,9 +13,17 @@ route.get('/',
 route.post('/create'
     ,
     (req: Request, res: Response) => {
-        const {colorNumber,paletteId} = req.body;
-        const id = colorService.createColor(colorNumber, paletteId);
-        res.send(id.lastInsertRowid)
+        const {code,paletteId} = req.body;
+        const id = colorService.createColor(code, paletteId);
+        res.status(201).json({ id: id.lastInsertRowid });
+    }
+);
+
+route.delete('/delete/:id',
+    (req: Request, res: Response) => {
+        const {id} = req.params;
+        colorService.deleteColor(id);
+        res.json('Color deleted')
     }
 );
 

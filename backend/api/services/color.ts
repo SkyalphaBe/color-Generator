@@ -5,7 +5,11 @@ export namespace colorService {
     export const getAllColors = (): Array<color> => {
         return colorHelper.getAllColors();
     }
-    export const createColor = (colorNumber:String,paletteId:number)  => {
-         return colorHelper.createColor(colorNumber,paletteId);
+    export const createColor = (code:String,paletteId:number)  => {
+         return colorHelper.createColor(code,paletteId);
+    }
+
+    export const deleteColor = (id:string) => {
+        return colorHelper.deleteColor(id);
     }
 }

@@ -5,9 +5,15 @@ export namespace colorHelper {
     export const getAllColors = (): Array<color> => {
         return database.prepare('SELECT * FROM colors').all() as Array<color>;
     }
-    export const createColor = (colorNumber:String,paletteId:number) => {
+    export const createColor = (code:String,paletteId:number) => {
             return database
-                .prepare('INSERT INTO color(colorNumber,paletteId) VALUES(?,?)')
-                .run([colorNumber,paletteId]);
+                .prepare('INSERT INTO colors(code,paletteId) VALUES(?,?)')
+                .run([code,paletteId]);
+    }
+
+    export const deleteColor = (id:string) => {
+        return database
+            .prepare('DELETE FROM colors WHERE id = ?')
+            .run([id]);
     }
 }
