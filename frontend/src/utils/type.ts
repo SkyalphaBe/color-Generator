@@ -9,3 +9,8 @@ export type palettePropsCreate = {
     name: String,
     nbColor: number,
 }
+
+export type colorProps = {
+    code: String,
+    paletteId: number,
+}

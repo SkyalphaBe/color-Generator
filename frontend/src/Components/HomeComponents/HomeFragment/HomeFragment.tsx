@@ -47,7 +47,7 @@ function HomeFragment(props:{"parentNode":HTMLDivElement|null,"parentTitle":HTML
                     onExitComplete={() => null}
                 >
                     {showModal && <BackDropPortal onClick={()=>setShowModal(false)}>
-                        <SaveModal onClose={()=>setShowModal(false)}/>
+                        <SaveModal color={colorHome} onClose={()=>setShowModal(false)}/>
                     </BackDropPortal>
                     }
                 </AnimatePresence>

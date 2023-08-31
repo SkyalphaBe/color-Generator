@@ -26,7 +26,7 @@ const dropIn = {
     }
 }
 
-function SaveModal(props:{onClose:()=>void}) {
+function SaveModal(props:{onClose:()=>void,color:string}) {
 
     const [paletteList, setPaletteList] = useState<Array<PaletteProps>>([]);
 
@@ -39,6 +39,27 @@ function SaveModal(props:{onClose:()=>void}) {
             return palette;
         }));
     }
+
+    const addColorToPalettes = async (color:string) => {
+
+        const updatePalettes =  paletteList.map(async (palette:PaletteProps) => {
+            if (!palette.selected) return;
+            const response:Response = await fetch("http://localhost:8080/api/colors/create", {
+                method: "POST",
+                headers: {
+                    "Accept": "application/json",
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({
+                    code: color,
+                    paletteId: palette.id
+                })
+            });
+            return await response.json()
+        });
+        const results = await Promise.all(updatePalettes);
+        console.log("Results:", results);
+    };
 
     useEffect(() => {
         fetch("http://localhost:8080/api/palettes")
@@ -70,7 +91,7 @@ function SaveModal(props:{onClose:()=>void}) {
                 }
                 <div className={"buttonBox"}>
                     <button onClick={props.onClose}>Cancel</button>
-                    <button>Save</button>
+                    <button onClick={()=>addColorToPalettes(props.color).then(props.onClose)}>Save</button>
                 </div>
             </div>
         </motion.div>
