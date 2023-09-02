@@ -1,11 +1,15 @@
 import { Request, Response } from "express";
 import {paletteService} from "../services/palette";
+import {colorService} from "../services/color";
 
 const route = require('express').Router();
 
 route.get('/',
     (req: Request, res: Response) => {
         const palettes = paletteService.getAllPalettes();
+        for (let palette of palettes) {
+            palette.colors = colorService.getColorsByPaletteId(palette.id);
+        }
         res.send(palettes);
     }
 );

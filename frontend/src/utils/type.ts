@@ -1,16 +1,17 @@
 export type PaletteProps = {
     id: number,
-    name: String,
+    name: string,
+    colors:colorProps[],
     nbColor: number,
     selected: boolean,
 }
 
 export type palettePropsCreate = {
-    name: String,
+    name: string,
     nbColor: number,
 }
 
 export type colorProps = {
-    code: String,
+    code: string,
     paletteId: number,
 }

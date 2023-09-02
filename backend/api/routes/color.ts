@@ -1,7 +1,7 @@
-import { Request, Response} from "express";
+import Router, {Request, Response} from "express";
 import {colorService} from "../services/color";
 
-const route = require('express').Router()
+const route = Router();
 
 route.get('/',
     (req: Request, res: Response) => {
@@ -10,12 +10,11 @@ route.get('/',
     }
 );
 
-route.post('/create'
-    ,
+route.post('/create',
     (req: Request, res: Response) => {
-        const {code,paletteId} = req.body;
+        const {code, paletteId} = req.body;
         const id = colorService.createColor(code, paletteId);
-        res.status(201).json({ id: id.lastInsertRowid });
+        res.status(201).json({id: id.lastInsertRowid});
     }
 );
 
@@ -27,4 +26,4 @@ route.delete('/delete/:id',
     }
 );
 
- export default route;
+export default route;

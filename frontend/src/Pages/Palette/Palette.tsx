@@ -1,4 +1,4 @@
-import React, {useEffect, useRef, useState} from "react";
+import {useEffect, useRef, useState} from "react";
 import "./Palette.scss";
 import PaletteLine from "../../Components/PaletteComponents/PaletteLine/PaletteLine";
 import PortalModal from "../../Components/PortalModal/PortalModal";
@@ -11,10 +11,10 @@ import {generateColor} from "../../utils/utils";
 library.add(fas)
 
 function Palette(){
-    const [contentState, setContentState] = React.useState<boolean>(false);
-    const [palette, setPalette] = React.useState<Array<PaletteProps>>([]);
-    const [oldPalette, setOldPalette] = React.useState<number>();
-    const [color,setColor] = useState<string>("");
+    const [contentState, setContentState] = useState(false);
+    const [palette, setPalette] = useState<PaletteProps[]>([]);
+    const [oldPalette, setOldPalette] = useState<number>();
+    const [color,setColor] = useState("");
     const intervalRef = useRef<number>();
     const fetchData = (url: RequestInfo | URL) => fetch(url).then(res => res.json());
     const handleCallback = (childData: number) => {
@@ -37,6 +37,7 @@ function Palette(){
                 if (data.length > 0) {
                     setContentState(true);
                     setPalette(data);
+                    console.log(data)
                 }
             }
         );
@@ -52,7 +53,7 @@ function Palette(){
             <div className={"menu"}>
                 {contentState ?
                     <div className={"content"}>
-                        {palette.map((palette: PaletteProps) => <PaletteLine key={palette.id} id={palette.id} name={palette.name} nbColor={0} parentCallback={handleCallback}/>)}
+                        {palette.map((palette: PaletteProps) => <PaletteLine key={palette.id} palette={palette} parentCallback={handleCallback}/>)}
                     </div>
                     :
                     <h1>There is no color-palette for the moment :( </h1>

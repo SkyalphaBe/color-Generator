@@ -41,7 +41,6 @@ function SaveModal(props:{onClose:()=>void,color:string}) {
     }
 
     const addColorToPalettes = async (color:string) => {
-
         const updatePalettes =  paletteList.map(async (palette:PaletteProps) => {
             if (!palette.selected) return;
             const response:Response = await fetch("http://localhost:8080/api/colors/create", {
@@ -91,7 +90,7 @@ function SaveModal(props:{onClose:()=>void,color:string}) {
                 }
                 <div className={"buttonBox"}>
                     <button onClick={props.onClose}>Cancel</button>
-                    <button onClick={()=>addColorToPalettes(props.color).then(props.onClose)}>Save</button>
+                    <button onClick={()=>addColorToPalettes(`#${props.color}`).then(props.onClose)}>Save</button>
                 </div>
             </div>
         </motion.div>
