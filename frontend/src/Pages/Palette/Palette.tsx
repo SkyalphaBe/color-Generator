@@ -7,6 +7,7 @@ import {PaletteProps} from "../../utils/type";
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { fas } from '@fortawesome/free-solid-svg-icons'
 import {generateColor} from "../../utils/utils";
+import {fetchData} from "../../utils/service";
 
 library.add(fas)
 
@@ -16,7 +17,6 @@ function Palette(){
     const [oldPalette, setOldPalette] = useState<number>();
     const [color,setColor] = useState("");
     const intervalRef = useRef<number>();
-    const fetchData = (url: RequestInfo | URL) => fetch(url).then(res => res.json());
     const handleCallback = (childData: number) => {
         setOldPalette(childData);
     }
@@ -32,15 +32,18 @@ function Palette(){
     },[])
 
     useEffect(() => {
-        fetchData("http://localhost:8080/api/palettes")
-            .then(data => {
+        const initData = async () => {
+            try {
+                const data = await fetchData<PaletteProps[]>("http://localhost:8080/api/palettes");
                 if (data.length > 0) {
                     setContentState(true);
                     setPalette(data);
-                    console.log(data)
                 }
+            } catch (e) {
+                console.log(e);
             }
-        );
+        }
+        initData();
     }, []);
 
     useEffect(() => {

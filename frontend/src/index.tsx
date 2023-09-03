@@ -3,7 +3,6 @@ import ReactDOM from 'react-dom/client';
 import './index.scss';
 import App from './Layout/App';
 import {createBrowserRouter, RouterProvider} from "react-router-dom";
-import Home from "./Pages/Home/Home";
 import Palette from "./Pages/Palette/Palette";
 
 const root = document.querySelector("#root");
@@ -11,12 +10,8 @@ const router = createBrowserRouter([
     {
         path: "/",
         element: <App/>,
-        //errorElement: <div>404</div>,
+        errorElement: <div>404</div>,
         children: [
-            {
-                path: "/",
-                element: <Home/>
-            },
             {
                 path: "/color-palette",
                 element: <Palette/>
