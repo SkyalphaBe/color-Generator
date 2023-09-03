@@ -1,41 +1,64 @@
-.navBar{
-  display: flex;
-  align-items: center;
-  background-color: #212020;
-  color: #FFFFFF;
-  width: 100%;
-
-  .navBar__content{
+.navBar {
     display: flex;
     align-items: center;
-    justify-content: space-around;
-    width: 100%;
-    padding: 10px;
-  }
-
-  .navBar__content__links{
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    width: 20%;
-    padding: 10px;
-  }
-
-  a{
+    background-color: #212020;
     color: #FFFFFF;
-    text-decoration: none;
-    padding: 10px;
-    border-radius: 15px;
-    transition: all 0.3s;
+    width: 100%;
+    box-shadow: 0 0 15px 0 rgba(0, 0, 0, 0.75);
 
-    &:hover{
-      background-color: #FFFFFF;
-      color: #000000;
+    .navBar__content {
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+        width: 100%;
+        padding: 10px;
     }
 
-    &.active{
-      background-color: #FFFFFF;
-      color: #000000;
+    .navBar__content__links {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 10px;
     }
-  }
+
+    a {
+        z-index: 1;
+        position: relative;
+        text-decoration: none;
+        padding: 15px 35px;
+        border-radius: 15px;
+        transition: all 0.3s;
+        background-color: white;
+        color: black;
+        overflow: hidden;
+
+        &::after{
+            z-index: -1;
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 0;
+            height: 100%;
+            background: linear-gradient(90deg,
+                rgba(234, 196, 53, 1) 0%,
+                rgba(234, 196, 53, 1) 20%,
+                rgba(52, 89, 149, 1) 20%,
+                rgba(52, 89, 149, 1) 40%,
+                rgba(228, 0, 102, 1) 40%,
+                rgba(228, 0, 102, 1) 60%,
+                rgba(3, 206, 164, 1) 60%,
+                rgba(3, 206, 164, 1) 80%,
+                rgba(251, 77, 61, 1) 80%);
+            transition: width 0.3s;
+        }
+
+        &:hover {
+            color: white;
+
+            &::after{
+                width: 100%;
+            }
+        }
+    }
 }
