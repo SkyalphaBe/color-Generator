@@ -15,4 +15,8 @@ export namespace paletteHelper {
             .prepare('DELETE FROM palette WHERE id = ?')
             .run([id]);
     }
+
+    export const getPaletteById = (id: number): palette => {
+        return database.prepare('SELECT * FROM palette WHERE id = ?').get([id]) as palette;
+    }
 }

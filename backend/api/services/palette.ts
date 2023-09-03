@@ -12,4 +12,8 @@ export namespace paletteService {
     export const deletePalette = (id:String) => {
         return paletteHelper.deletePalette(id);
     }
+
+    export const getPaletteById = (id: number): palette => {
+        return paletteHelper.getPaletteById(id);
+    }
 }

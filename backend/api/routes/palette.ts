@@ -1,4 +1,4 @@
-import { Request, Response } from "express";
+import {Request, Response} from "express";
 import {paletteService} from "../services/palette";
 import {colorService} from "../services/color";
 
@@ -19,7 +19,9 @@ route.post('/create'
     (req: Request, res: Response) => {
         const {name} = req.body;
         const id = paletteService.createPalette(name);
-        res.status(201).json({ id: id.lastInsertRowid });
+        const newPalette = paletteService.getPaletteById(id.lastInsertRowid as number);
+        newPalette.colors = [];
+        res.status(201).json(newPalette);
     }
 );
 

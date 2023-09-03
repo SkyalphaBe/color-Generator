@@ -8,7 +8,6 @@ export type PaletteProps = {
 
 export type palettePropsCreate = {
     name: string,
-    nbColor: number,
 }
 
 export type colorProps = {

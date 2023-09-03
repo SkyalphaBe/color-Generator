@@ -1,4 +1,4 @@
-import {useState} from "react";
+import {ChangeEvent, FC, useState} from "react";
 import "./CreateModal.scss";
 import {motion} from "framer-motion";
 import {palettePropsCreate} from "../../../utils/type";
@@ -24,31 +24,21 @@ const dropIn = {
     }
 }
 
-function CreateModal(props: { onClose: () => void }) {
+type CreateModalProps = {
+    onClose: () => void;
+    onCreated: (pal:palettePropsCreate) => void;
+}
 
-    const [paletteName, setPaletteName] = useState("")
-    const handleChangePalette = (e: React.ChangeEvent<HTMLInputElement>) => {
-        setPaletteName(e.target.value)
+const CreateModal: FC<CreateModalProps> = ({onClose,onCreated}) => {
+
+    const [paletteName, setPaletteName] = useState<palettePropsCreate>({name: ""});
+    const handleChangePalette = (e: ChangeEvent<HTMLInputElement>) => {
+        setPaletteName({name: e.target.value});
     }
 
-    async function addPalette(): Promise<void> {
-        const palette: palettePropsCreate = {
-            name: paletteName,
-            nbColor: 0
-        }
-        const RawResponse: Response = await fetch("http://localhost:8080/api/palettes/create", {
-            method: "POST",
-            headers: {
-                'Accept': 'text/plain',
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify(palette)
-        });
-        const content: void = await RawResponse.json()
-            .then((data): void => {
-                setPaletteName(data.id)
-            })
-        console.log(content);
+    const handleCreatePalette = () => {
+        onCreated(paletteName);
+        onClose();
     }
 
     return (
@@ -65,8 +55,8 @@ function CreateModal(props: { onClose: () => void }) {
                 <input type="text" id="name" name="name" onChange={handleChangePalette}/>
             </div>
             <div className={"modal__btn"}>
-                <button className={"btnCancel"} onClick={props.onClose}>Cancel</button>
-                <button className={"btnCreate"} onClick={addPalette}>Create</button>
+                <button className={"btnCancel"} onClick={onClose}>Cancel</button>
+                <button className={"btnCreate"} onClick={handleCreatePalette}>Create</button>
             </div>
         </motion.div>
     );

@@ -1,28 +1,25 @@
-import React from "react";
-import CreateModal from "../PaletteComponents/CreateModal/CreateModal";
+import {FC, ReactNode} from "react";
 import BackDropPortal from "../BackDropPortal/BackDropPortal";
 import {AnimatePresence} from "framer-motion";
 
-function PortalModal(){
-
-    const [showModal, setShowModal] = React.useState<boolean>(false);
+type PortalModalProps = {
+    children: ReactNode;
+    onClose: () => void;
+    visible?: boolean;
+}
+const PortalModal: FC<PortalModalProps> = ({children, visible, onClose}) => {
 
     return (
-        <>
-            <button className={"btnNew"} onClick={()=>setShowModal(true)}>
-                +
-            </button>
-            <AnimatePresence
-                initial={false}
-                mode="wait"
-                onExitComplete={() => null}
-            >
-                {showModal && <BackDropPortal onClick={()=>setShowModal(false)}>
-                    <CreateModal onClose={()=>setShowModal(false)}/>
-                </BackDropPortal>
-                }
-            </AnimatePresence>
-        </>
+        <AnimatePresence
+            initial={false}
+            mode="wait"
+            onExitComplete={() => null}
+        >
+            {visible && <BackDropPortal onClick={() => onClose()}>
+                {children}
+            </BackDropPortal>
+            }
+        </AnimatePresence>
     );
 }
 
