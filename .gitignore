@@ -4,6 +4,7 @@
 .idea
 /.pnp
 .pnp.js
+.env*.local
 
 # testing
 /coverage

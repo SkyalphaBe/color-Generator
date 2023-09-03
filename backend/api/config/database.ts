@@ -16,7 +16,7 @@ const loadDatabase = (db: Database): void => {
             id INTEGER PRIMARY KEY AUTOINCREMENT,
             code VARCHAR2 NOT NULL,
             paletteId INTEGER NOT NULL,
-            FOREIGN KEY (paletteId) REFERENCES palette(id)
+            FOREIGN KEY (paletteId) REFERENCES palette(id) ON DELETE CASCADE
         );
 
         CREATE TABLE IF NOT EXISTS palette
