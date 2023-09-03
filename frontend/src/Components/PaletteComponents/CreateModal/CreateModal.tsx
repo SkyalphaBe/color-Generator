@@ -26,7 +26,7 @@ const dropIn = {
 
 type CreateModalProps = {
     onClose: () => void;
-    onCreated: (pal:palettePropsCreate) => void;
+    onCreated: (pal:palettePropsCreate) => Promise<void>;
 }
 
 const CreateModal: FC<CreateModalProps> = ({onClose,onCreated}) => {
@@ -36,8 +36,8 @@ const CreateModal: FC<CreateModalProps> = ({onClose,onCreated}) => {
         setPaletteName({name: e.target.value});
     }
 
-    const handleCreatePalette = () => {
-        onCreated(paletteName);
+    const handleCreatePalette = async () => {
+        await onCreated(paletteName);
         onClose();
     }
 

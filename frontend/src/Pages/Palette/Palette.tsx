@@ -17,15 +17,11 @@ const Palette: FC = () => {
 
     useEffect(() => {
         const initData = async () => {
-            try {
-                const url = `${import.meta.env.VITE_DOMAIN_NAME}/api/palettes`;
-                const data = await fetchData<PaletteProps[]>(url);
-                setPalettes(data);
-            } catch (e) {
-                console.log(e);
-            }
+            const url = `${import.meta.env.VITE_DOMAIN_NAME}/api/palettes`;
+            const data = await fetchData<PaletteProps[]>(url);
+            setPalettes(data);
         }
-        initData();
+        initData().catch((e) => console.error(e));
     }, []);
 
     const deletePalette = async (id: number) => {
