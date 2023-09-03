@@ -10,10 +10,12 @@ const router = createBrowserRouter([
     {
         path: "/",
         element: <App/>,
+/*
         errorElement: <div>404</div>,
+*/
         children: [
             {
-                path: "/color-palette",
+                path: "/",
                 element: <Palette/>
             }
         ]
