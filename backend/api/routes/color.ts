@@ -14,7 +14,8 @@ route.post('/create',
     (req: Request, res: Response) => {
         const {code, paletteId} = req.body;
         const id = colorService.createColor(code, paletteId);
-        res.status(201).json({id: id.lastInsertRowid});
+        const color = colorService.getColorById(id.lastInsertRowid as number);
+        res.status(201).json(color);
     }
 );
 

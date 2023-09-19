@@ -20,4 +20,8 @@ export namespace colorHelper {
     export const getColorsByPaletteId = (paletteId: number): Array<color> => {
         return database.prepare('SELECT * FROM colors WHERE paletteId = ?').all([paletteId]) as Array<color>;
     }
+
+    export const getColorById = (id: number): color => {
+        return database.prepare('SELECT * FROM colors WHERE id = ?').get([id]) as color;
+    }
 }

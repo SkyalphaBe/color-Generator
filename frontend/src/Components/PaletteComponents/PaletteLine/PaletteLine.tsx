@@ -8,8 +8,9 @@ import Color from "../Color/Color";
 type PaletteLineProps = {
     palette: PaletteProps;
     onDelete: () => void;
+    setSelectedPalette: () => void;
 }
-const PaletteLine: FC<PaletteLineProps> = ({palette, onDelete}) => {
+const PaletteLine: FC<PaletteLineProps> = ({palette, onDelete,setSelectedPalette}) => {
 
     return (
         <div className={"paletteLine"}>
@@ -21,6 +22,7 @@ const PaletteLine: FC<PaletteLineProps> = ({palette, onDelete}) => {
                 <div className={"btnClass"}>
                     <button><FontAwesomeIcon icon={faPenToSquare}/></button>
                     <button onClick={onDelete}><FontAwesomeIcon icon={faTrash}/></button>
+                    <input onChange={setSelectedPalette} type={"checkbox"} checked={!!palette.selected}/>
                 </div>
                 <h4 className={"paletteLine__nbColor"}>color : {palette.colors.length}</h4>
             </div>

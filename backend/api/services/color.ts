@@ -16,4 +16,8 @@ export namespace colorService {
     export const getColorsByPaletteId = (paletteId: number): Array<color> => {
         return colorHelper.getColorsByPaletteId(paletteId);
     }
+
+    export const getColorById = (id: number): color => {
+        return colorHelper.getColorById(id);
+    }
 }
