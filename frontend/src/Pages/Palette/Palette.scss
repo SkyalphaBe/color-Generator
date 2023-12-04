@@ -4,9 +4,7 @@
     justify-content: center;
     align-items: center;
     width: 80%;
-    background-color: #ffffff;
     box-shadow: rgba(0, 0, 0, 0.35) 0 5px 15px;
-    border-radius: 15px;
 
     .content{
         display: flex;
@@ -17,6 +15,11 @@
         overflow: scroll;
         padding: 20px;
         box-sizing: border-box;
+        background-color: #ffffff;
+        z-index: 1;
+        border-radius: 15px;
+
+
     }
 
     .btnNew{
@@ -28,6 +31,7 @@
         top: 0;
         translate: 50% -50%;
         margin: 0;
+        z-index: 2;
     }
 }
 
